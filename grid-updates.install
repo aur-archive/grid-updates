@@ -1,0 +1,20 @@
+post_install() {
+    echo
+    echo ">>> Make sure tahoe-lafs is running and run:"
+    echo ">>>  grid-updates --patch-tahoe   to apply the patch"
+    echo ">>>               --download-news for the latest NEWS file"
+    echo
+}
+
+post_upgrade() {
+    echo
+    echo ">>> Run: grid-updates --patch-tahoe  to finish update"
+    echo
+}
+
+pre_remove() {
+    echo
+    echo -n ">>> Running: grid-updates --undo-patch-tahoe ..."
+    /usr/bin/grid-updates --undo-patch-tahoe 1>/dev/null &&
+        echo "ok" || echo "failed"
+}

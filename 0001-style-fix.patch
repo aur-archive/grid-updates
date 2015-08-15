@@ -1,0 +1,220 @@
+diff -NaurB grid-updates-1.2.0-orig/share/tahoe.css.patched19 grid-updates-1.2.0/share/tahoe.css.patched19
+--- grid-updates-1.2.0-orig/share/tahoe.css.patched19	2012-09-09 08:13:11.000000000 -0400
++++ grid-updates-1.2.0/share/tahoe.css.patched19	2012-09-11 00:39:33.000000000 -0400
+@@ -6,7 +6,7 @@
+                padding: .25em;
+                overflow: auto;
+                }
+-               
++
+ /* ----------------------------------------------------------------------- */
+ 
+ /* colors borrowed from the Allmydata logo */
+@@ -15,14 +15,14 @@
+ h1 {
+   text-align: center;
+ }
+-table { 
++table {
+   margin: 1em auto;
+-  border: .2em solid #3289b4; 
++  border: .2em solid #3289b4;
+   border-spacing: 1px;
+ }
+-th { 
++th {
+   color: white;
+-  background-color: #58a1c3;
++  background-color: #3289b4;
+ }
+ td {
+     padding: .3em .3em;
+@@ -34,7 +34,7 @@
+ 
+ .table-headings-top th {
+     text-align: center;
+-    
++
+ }
+ .table-headings-left th {
+     text-align: right;
+@@ -87,9 +87,8 @@
+   font-size: 60%;
+   border: .2em solid #3289b4;
+   float: right;
+-  width: 40%;
++  width: 42%;
+   margin: 0 0 .5em .5em;
+-  padding: 3px;
+ }
+ #this-client .nodeid { font-size: inherit; }
+ #this-client h2 {
+@@ -99,42 +98,44 @@
+   margin: -2px -2px 0 -2px; /* matches padding */
+   padding: .3em;
+ }
+-#this-client table { 
++#this-client table {
+   font-size: inherit;
+   margin: 0 -3px -3px -3px; /* matches padding */
++  border: none;
+ }
+ #this-client td > ul {
+   list-style-type: outside;
+   margin: 0 0 0 2.3em;
+-  padding-left: 0;
++  padding-left: 10;
+ }
+ 
+ #grid-updates {
+-  width: 55%;
++  width: 56%;
+   font-size: 60%;
+   color: white;
+   text-align: center;
+   background: white;
+-  border: .3em solid #3289b4;
++  border: .2em solid #3289b4;
+ }
+ #grid-updates h2 {
+   background: #3289b4;
+-  border: 1px solid white;
++  margin: -2px -2px 0 -2px; /* matches padding */
+   margin: 0;
+   padding: .3em;
+ }
+ div.grid-updates{
+-  background: #58a1c3;
+-  border: 1px solid white;
+-  font-family: sans-serif;
++  background: #3289b4;
++  border: 1px solid #3289b4;
++  margin: 0 -2px -2px -2px;  /*matches padding */
+ }
+ a.grid-updates {
+   color: white;
++  padding: .2em;
+ }
+ iframe#grid-updates {
+   background-color: white;
+   width: 98%;
+-  height: 25%;
++  height: 52%;
+   border: none;
+ }
+ /* End grid-updates news section */
+@@ -184,7 +185,7 @@
+ table.status-download-events {
+   #border: 1px solid #aaa;
+   margin: 1em auto;
+-  border: .2em solid #3289b4; 
++  border: .2em solid #3289b4;
+   border-spacing: 1px;
+ }
+ table.status-download-events td {
+diff -NaurB grid-updates-1.2.0-orig/share/welcome.xhtml.patched19 grid-updates-1.2.0/share/welcome.xhtml.patched19
+--- grid-updates-1.2.0-orig/share/welcome.xhtml.patched19	2012-09-09 08:13:11.000000000 -0400
++++ grid-updates-1.2.0/share/welcome.xhtml.patched19	2012-09-11 00:40:06.000000000 -0400
+@@ -11,18 +11,18 @@
+ <div class="section" id="this-client">
+   <h2>This Client</h2>
+ 
+-  <p>
+-    <a href="status/">Recent Uploads and Downloads</a>,
+-    <a href="statistics">Operational Statistics</a>
+-  </p>
+ 
+   <table class="node-info table-headings-left">
+-    <tr><th>My nickname:</th> <td class="nickname mine" n:render="string" n:data="my_nickname" /></tr>
+-    <tr><th>My nodeid:</th> <td class="nodeid mine data-chars" n:render="string" n:data="my_nodeid" /></tr>
+-    <tr><th>My versions:</th> <td n:render="string" n:data="version" /></tr>
+-    <tr><th>Tahoe-LAFS code imported from:</th> <td n:render="string" n:data="import_path" /></tr>
+-    <tr><th>Services running:</th> <td n:render="services" /></tr>
++    <tr><th>Nickname:</th> <td class="nickname mine" n:render="string" n:data="my_nickname" /></tr>
++    <tr><th>Nodeid:</th> <td class="nodeid mine data-chars" n:render="string" n:data="my_nodeid" /></tr>
++    <tr><th>Versions:</th> <td n:render="string" n:data="version" /></tr>
++    <tr><th>Tahoe-LAFS module path:</th> <td n:render="string" n:data="import_path" /></tr>
++    <tr><th>Services:</th> <td n:render="services" /></tr>
+   </table>
++    <p>
++    <a href="status/">Recent Uploads and Downloads</a>,
++    <a href="statistics">Operational Statistics</a>
++  </p>
+ </div>
+ 
+ <div id="controls">
+@@ -30,15 +30,16 @@
+         <h2>Grid News</h2>
+         <iframe id="grid-updates" scrolling="auto" name="grid-updates-news" src="static/NEWS.html" />
+         <div class="grid-updates">
+-                Please note: the above <a class="grid-updates" href="static/NEWS.html">news items</a> are
+-                retrieved by <a class="grid-updates"
++                Note: the above <a class="grid-updates" href="static/NEWS.html">news</a> are retrieved by
++                <a class="grid-updates"
+                 href="/uri/URI%3ADIR2-RO%3Ahgh5ylzzj6ey4a654ir2yxxblu%3Ahzk3e5rbsefobeqhliytxpycop7ep6qlscmw4wzj5plicg3ilotq/"
+                 >grid-updates</a>.
+-                It needs to be run regularly in order to receive news updates.
++                You need to run it regularly to recieve updates.
+         </div>
+ </div>
+ <!-- End grid-updates patch -->
+ 
++<br />
+ <h2>Controls</h2>
+ 
+   <p>There are also controls for each directory on that directory's page.</p>
+@@ -49,6 +50,7 @@
+   <div n:render="download_form" />
+ </div>
+ 
++<br />
+ <h2>Connected Introducer(s)</h2>
+ 
+ <div>
+@@ -73,12 +75,6 @@
+ <div class="section" id="grid">
+   <h2>Status of the Storage Grid</h2>
+ 
+-  <div>
+-    <n:attr name="class">connected-<n:invisible n:render="string" n:data="connected_to_helper" /></n:attr>
+-    <div>Helper: <span n:render="string" n:data="helper_furl" /></div>
+-    <div>Connected to helper?: <span n:render="string" n:data="connected_to_helper" /></div>
+-  </div>
+-
+   <p>Connected to <span n:render="string" n:data="connected_storage_servers" />
+      of <span n:render="string" n:data="known_storage_servers" /> known storage servers:</p>
+ 
+@@ -110,18 +106,30 @@
+       <tr n:pattern="empty"><td>no peers!</td></tr>
+     </table>
+   </div>
++    <div>
++    <n:attr name="class">connected-<n:invisible n:render="string" n:data="connected_to_helper" /></n:attr>
++    <div>Helper: <span n:render="string" n:data="helper_furl" /></div>
++    <div>Connected to helper?: <span n:render="string" n:data="connected_to_helper" /></div>
++  </div>
+ </div>
+ 
+ <div class="section" id="other-resources">
+   <h2>Other Resources</h2>
+ 
+-  <div>Please visit the <a target="_blank" href="https://tahoe-lafs.org/">Tahoe-LAFS home page</a> for
+-  code updates and bug reporting.</div>
++  <div><li>
++	The <a href="provisioning">provisioning tool</a> and <a
++    href="reliability">reliability calculator</a> may also be useful.
++  </li></div>
++
++  <div><li>
++	Please visit the <a target="_blank" href="https://tahoe-lafs.org/">Tahoe-LAFS home page</a> for
++    code updates and bug reporting.
++  </li></div>
+ 
+   <div>The <a href="provisioning">provisioning tool</a> and <a
+   href="reliability">reliability calculator</a> may also be useful.</div>
+ 
+-  <div n:render="incident_button" />
++  <p><div n:render="incident_button" /></p>
+ </div>
+ 
+ </body></html>
